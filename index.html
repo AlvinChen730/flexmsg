@@ -27,7 +27,7 @@
         {
           "type": "flex",
           "altText": "Flex Message",
-          "contents": str
+          "contents": getContent.str
         }
       ])
       if (result) {
@@ -62,6 +62,7 @@
       } 
       else {
         document.getElementById("btnLogin").style.display = "block"
+        document.getElementById("contentCheck").style.display = "block"
       }
     }
     main()
