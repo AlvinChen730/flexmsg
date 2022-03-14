@@ -54,6 +54,7 @@
       await liff.init({ liffId: "1656972516-qoPwgDP0" })
       if (liff.isLoggedIn()) {
         document.getElementById("btnShare").style.display = "block"
+        document.getElementById("contentCheck").style.display = "block"
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
         }
