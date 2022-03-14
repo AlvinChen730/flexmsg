@@ -18,15 +18,15 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   
   <script>
-    function getContent(){
-        var str= document.getElementById("getcontenText").value;
-    }
+
+    var str= document.getElementById("getcontenText").value;
+    
     async function sendShare() {
       const result = await liff.shareTargetPicker([
         {
           "type": "flex",
           "altText": "Flex Message",
-          "contents": getContent
+          "contents": str
         }
       ])
       if (result) {
