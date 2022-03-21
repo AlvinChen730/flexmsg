@@ -1,8 +1,4 @@
 {
-"type": "flex",
-"altText": "Flex Message",
-"contents": 
-{
     "type": "bubble",
     "hero": {
       "type": "image",
@@ -79,5 +75,6 @@
       ]
     }
   }
-}
+
+
 
