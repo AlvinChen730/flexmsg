@@ -13,16 +13,20 @@
   <button id="btnShare" onclick="sendShare()">Share Target Picker</button>
   <button id="btnLogin" onclick="liff.login()">Log In</button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
+  <button id="contentCheck" onclick="getContent()" >Submit</button>
+  <p id="flexInput"></p> 
   <input id="getcontenText" placeholder="json here">
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   
   <script>
-        var str= document.getElementById("getcontenText").value;
-    
+    const getContent=()=>{
+        let flex= document.getElementById("getcontenText").value;
+        document.getElementById("flexInput").innerHTML=flex;
+    }
     async function sendShare() {
       const result = await liff.shareTargetPicker([
         {
-          str
+          getContent
         }
       ])
       if (result) {
