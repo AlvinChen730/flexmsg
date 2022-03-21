@@ -16,7 +16,7 @@
   <p id="flexInput"></p> 
   <input id="getcontenText" placeholder="json here">
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  
+  <script src="https://raw.githubusercontent.com/AlvinChen730/flexmsg/main/card.json"></script>>
   <script>
     async function sendShare() {
       let flex= document.getElementById("getcontenText").value;
@@ -27,7 +27,7 @@
       {
       "type": "flex",
       "altText": "Flex Message",
-      "contents": flexcontent
+      "contents": toString(flexcontent)    
       }
     ])
       
