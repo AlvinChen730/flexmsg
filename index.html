@@ -26,9 +26,7 @@
         document.getElementById("flexInput").innerHTML=flex;
     }
     async function sendShare() {
-      const result = await liff.shareTargetPicker([
-        jQuery.getJSON("https://github.com/AlvinChen730/flexmsg/blob/main/card.json")
-      ])
+      const result = await liff.shareTargetPicker(getContent)
       
       if (result) {
         alert(`[${result.status}] Message sent!`)
