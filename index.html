@@ -25,8 +25,10 @@
         let flex= document.getElementById("getcontenText").value;
         document.getElementById("flexInput").innerHTML=flex;
     }
+
     async function sendShare() {
-      const result = await liff.shareTargetPicker(getContent)
+      console.log(getContent);
+      const result = await liff.shareTargetPicker()
       
       if (result) {
         alert(`[${result.status}] Message sent!`)
