@@ -25,7 +25,7 @@
     }
     async function sendShare() {
       const result = await liff.shareTargetPicker([
-        JSON=getContent
+        JSON.parse(getContent)
       ])
       
       if (result) {
