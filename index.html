@@ -16,18 +16,17 @@
   <p id="flexInput"></p> 
   <textarea id="getcontenText" placeholder="json here"></textarea>>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  <script src="https://raw.githubusercontent.com/AlvinChen730/flexmsg/main/card.json"></script>
   <script>
     async function sendShare() {
       let flex= document.getElementById("getcontenText").value;
       document.getElementById("flexInput").innerHTML=flex;
       const flexcontent=flex
       console.log(flexcontent)
-       result = await liff.shareTargetPicker([
+      const result = await liff.shareTargetPicker([
       {
       "type": "flex",
       "altText": "Flex Message",
-      "contents": flexcontent
+      "contents": flexcontent,
       }
     ])
       
