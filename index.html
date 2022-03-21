@@ -22,7 +22,8 @@
       let flex= document.getElementById("getcontenText").value;
       document.getElementById("flexInput").innerHTML=flex;
       console.log(flex)
-      const result = await liff.shareTargetPicker([flex])
+      
+      const result = await liff.shareTargetPicker([JSON.stringify(flex)])
       
       if (result) {
         alert(`[${result.status}] Message sent!`)
