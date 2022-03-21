@@ -19,13 +19,15 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   
   <script>
+
+    
     const getContent=()=>{
         let flex= document.getElementById("getcontenText").value;
         document.getElementById("flexInput").innerHTML=flex;
     }
     async function sendShare() {
       const result = await liff.shareTargetPicker([
-        JSON.parse(getContent)
+        JSON.stringify(getContent)
       ])
       
       if (result) {
