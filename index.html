@@ -23,12 +23,12 @@
     function getContent(){
         console.log(getflex);
     }
-    var getflex=document.getElementById("contentCheck")
+    var getflex=document.getElementById("getcontenText")
     getflex.addEventListener("click", getContent, true)
     
     async function sendShare() {
       console.log(getflex);
-      const result = await liff.shareTargetPicker()
+      const result = await liff.shareTargetPicker(getflex)
       
       if (result) {
         alert(`[${result.status}] Message sent!`)
