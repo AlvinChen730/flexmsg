@@ -27,7 +27,7 @@
     }
     async function sendShare() {
       const result = await liff.shareTargetPicker([
-        JSON.stringify(getContent)
+        jQuery.getJSON("https://github.com/AlvinChen730/flexmsg/blob/main/card.json")
       ])
       
       if (result) {
