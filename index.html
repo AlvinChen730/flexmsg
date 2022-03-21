@@ -24,9 +24,7 @@
     async function sendShare() {
       const result = await liff.shareTargetPicker([
         {
-          "type": "flex",
-          "altText": "Flex Message",
-          "contents": getContent()
+          getContent
         }
       ])
       if (result) {
