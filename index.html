@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF App</title>
+  <title>CHILL FOUND LINE電子名片轉換器</title>
   <style>
     body { padding: 256px }
-    button { display: none; width: 50%; padding: 16px 0; margin: 16px auto }
+    button { display: none; width: 30%; padding: 20px 0; margin: 16px auto }
   </style>
 </head>
 <body>
-  <button id="btnShare" onclick="sendShare()">Share Target Picker</button>
-  <button id="btnLogin" onclick="liff.login()">Log In</button>
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
+  <button id="Share" onclick="ShareFriend()">分享好友</button>
+  <button id="Login" onclick="liff.login()">登入</button>
+  <button id="Logout" onclick="logout()">登出</button>
   <p id="flexInput"></p> 
   <textarea id="getcontenText" placeholder="json here"></textarea>>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
-    async function sendShare() {
+    async function ShareFriend() {
       let flex= document.getElementById("getcontenText").value;
       document.getElementById("flexInput").innerHTML=flex;
       const flexcontent=flex
@@ -31,37 +31,37 @@
     ])
       
       if (result) {
-        alert(`[${result.status}] Message sent!`)
+        alert(`[${result.status}] 訊息送出!`)
       } 
       else {
-        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+        const [majorVersion, minorVersion, patchVersion] = (liff.getLineVersion() || "").split('.');
 
-        if (minorVer === undefined) {
-          alert('ShareTargetPicker was canceled in external browser')
+        if (minorVersion === undefined) {
+          alert('外部瀏覽器分享已關閉')
           return
         }
 
-        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
-          alert('ShareTargetPicker was canceled in LINE app')
+        if (parseInt(majorVersion) >= 10 && parseInt(minorVersion) >= 10 && parseInt(patchVersion) > 0) {
+          alert('Line APP分享已關閉')
         }
       }
     }
-    function logOut() {
+    function logout() {
       liff.logout()
       window.location.reload()
     }
     async function main() {
       await liff.init({ liffId: "1656972516-qoPwgDP0" })
       if (liff.isLoggedIn()) {
-        document.getElementById("btnShare").style.display = "block"
+        document.getElementById("Share").style.display = "block"
         
         if (!liff.isInClient()) {
-          document.getElementById("btnLogOut").style.display = "block"
+          document.getElementById("Logout").style.display = "block"
           
         }
       } 
       else {
-        document.getElementById("btnLogin").style.display = "block"
+        document.getElementById("Login").style.display = "block"
       }
     }
     main()
