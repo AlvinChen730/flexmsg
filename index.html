@@ -22,29 +22,30 @@
     const getContent=()=>{
         let flex= document.getElementById("getcontenText").value;
         document.getElementById("flexInput").innerHTML=flex;
-        return flex
-    }
-    async function sendShare() {
+        async function sendShare() {
 
-      console.log(getContent)
-      const result = await liff.shareTargetPicker()
-      
-      if (result) {
-        alert(`[${result.status}] Message sent!`)
-      } 
-      else {
-        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+        console.log(flex)
+        const result = await liff.shareTargetPicker(flex)
 
-        if (minorVer === undefined) {
-          alert('ShareTargetPicker was canceled in external browser')
-          return
-        }
+        if (result) {
+          alert(`[${result.status}] Message sent!`)
+        } 
+        else {
+          const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
 
-        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
-          alert('ShareTargetPicker was canceled in LINE app')
+          if (minorVer === undefined) {
+            alert('ShareTargetPicker was canceled in external browser')
+            return
+          }
+
+          if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+            alert('ShareTargetPicker was canceled in LINE app')
+          }
         }
       }
+
     }
+    
     function logOut() {
       liff.logout()
       window.location.reload()
