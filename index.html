@@ -6,25 +6,42 @@
   <title>CHILL FOUND LINE電子名片轉換器</title>
   <style>
     body { padding: 150px }
-    textarea { display: none; width: 30%; height: 150%; padding: 100px 0; margin: 30px auto}
+    input { display: none; width: 30%; height: 150%; padding: 100px 0; margin: 30px auto}
     button { display: none; width: 30%; padding: 20px 0; margin: 30px auto }
     
   </style>
 </head>
 <body>
-  <textarea id="getcontenText" placeholder="json here"></textarea>
+  <input id="getName" placeholder="姓名"></input>
+  <input id="getNameColor" placeholder="姓名顏色"></input>
+  <input id="getImgUrl" placeholder="個人照片"></input>
+  <input id="getJobTitle" placeholder="職稱"></input>
+  <input id="getMail" placeholder="電子郵件"></input>
+  <input id="getFB" placeholder="FB"></input>
+  <input id="getInfoWeb" placeholder="個人連結">
   <button id="Share" onclick="ShareFriend()">分享好友</button>
   <button id="Login" onclick="liff.login()">登入</button>
   <button id="Logout" onclick="logout()">登出</button>
-  <p id="flexInput"></p> 
   
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     async function ShareFriend() {
-      let flex= document.getElementById("getcontenText").value;
-      document.getElementById("flexInput").innerHTML=flex;
-      const flexcontent=flex
-      console.log(flexcontent)
+      let name= document.getElementById("getName").value
+      let nameColor= document.getElementById("getNameColor").value
+      let imgUrl= document.getElementById("getImgUrl").value
+      let jobTitle= document.getElementById("getJobTitle").value
+      let mail= document.getElementById("getMail").value
+      let fb= document.getElementById("getFB").value
+      let infoWeb=document.getElementById("getInfoWeb").value
+      
+      const contentName = name
+      console.log(contentName)
+      console.log(nameColor)
+      console.log(imgUrl)
+      console.log(jobTitle)
+      console.log(mail)
+      console.log(fb)
+      console.log(infoWeb)
       const result = await liff.shareTargetPicker([
       {
       "type": "flex",
@@ -33,7 +50,7 @@
     "type": "bubble",
     "hero": {
       "type": "image",
-      "url": "https://scontent.ftpe7-2.fna.fbcdn.net/v/t1.18169-9/10670259_659129860897733_8837841253775570241_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=XQYQ7RlfMTUAX8P9sfh&_nc_ht=scontent.ftpe7-2.fna&oh=00_AT-zDuZjP3Wh_IyF9LFJ3W2InO0OvCB6QBkE1cv76br2kw&oe=625406FB",
+      "url": JSON.parse(imgUrl),
       "size": "full",
       "aspectMode": "cover",
       "aspectRatio": "20:18"
@@ -44,10 +61,10 @@
       "contents": [
         {
           "type": "text",
-          "text": JSON.stringify(flexcontent),
+          "text": JSON.parse(contentName),
           "size": "xl",
           "weight": "bold",
-          "color": "#0099FF"
+          "color": JSON.parse(nameColor)
         },
         {
           "type": "box",
@@ -55,7 +72,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "CFID APP工程師",
+              "text": JSON.parse(jobTitle),
               "size": "lg",
               "style": "italic"
             }
@@ -71,7 +88,7 @@
             },
             {
               "type": "text",
-              "text": "alvinmk0730@gmail.com"
+              "text": JSON.parse(mail)
             }
           ]
         },
@@ -85,7 +102,7 @@
             },
             {
               "type": "text",
-              "text": "陳宇庠"
+              "text": JSON.parse(fb)
             }
           ]
         }
@@ -100,7 +117,7 @@
           "action": {
             "type": "uri",
             "label": "Website",
-            "uri": "https://www.facebook.com/alvin.chen.35325"
+            "uri": JSON.parse(infoWeb)
           }
         }
       ]
