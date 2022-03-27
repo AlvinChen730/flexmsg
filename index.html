@@ -1,76 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>CHILL FOUND LINE電子名片轉換器</title>
-  <style>
-    body { padding: 150px }
-    textarea { display: none; width: 30%; height: 150%; padding: 100px 0; margin: 30px auto}
-    button { display: none; width: 30%; padding: 20px 0; margin: 30px auto }
-    
-  </style>
-</head>
-<body>
-  <textarea id="getcontenText" placeholder="json here"></textarea>
-  <button id="Share" onclick="ShareFriend()">分享好友</button>
-  <button id="Login" onclick="liff.login()">登入</button>
-  <button id="Logout" onclick="logout()">登出</button>
-  <p id="flexInput"></p> 
-  
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  <script>
-    async function ShareFriend() {
-      let flex= document.getElementById("getcontenText").value;
-      document.getElementById("flexInput").innerHTML=flex;
-      const flexcontent=flex
-      console.log(flexcontent)
-      const result = await liff.shareTargetPicker([
-      {
-      "type": "flex",
-      "altText": "Flex Message",
-      "contents": JSON.parse(flexcontent)
-      }
-    ])
-      
-      if (result) {
-        alert(`[${result.status}] 訊息送出!`)
-      } 
-      else {
-        const [majorVersion, minorVersion, patchVersion] = (liff.getLineVersion() || "").split('.');
+{
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://scontent.ftpe7-2.fna.fbcdn.net/v/t1.18169-9/10670259_659129860897733_8837841253775570241_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=XQYQ7RlfMTUAX8P9sfh&_nc_ht=scontent.ftpe7-2.fna&oh=00_AT-zDuZjP3Wh_IyF9LFJ3W2InO0OvCB6QBkE1cv76br2kw&oe=625406FB",
+      "size": "full",
+      "aspectMode": "cover",
+      "aspectRatio": "20:18"
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "Alvin Chen",
+          "size": "xl",
+          "weight": "bold",
+          "color": "#0099FF"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "CFID APP工程師",
+              "size": "lg",
+              "style": "italic"
+            }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
+            {
+              "type": "icon",
+              "url": "https://global.download.synology.com/download/Package/img/MailStation/20211105-10315/thumb_256.png"
+            },
+            {
+              "type": "text",
+              "text": "alvinmk0730@gmail.com"
+            }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
+            {
+              "type": "icon",
+              "url": "https://play-lh.googleusercontent.com/ccWDU4A7fX1R24v-vvT480ySh26AYp97g1VrIB_FIdjRcuQB2JP2WdY7h_wVVAeSpg"
+            },
+            {
+              "type": "text",
+              "text": "陳宇庠"
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "Website",
+            "uri": "https://www.facebook.com/alvin.chen.35325"
+          }
+        }
+      ]
+    }
+  }
 
-        if (minorVersion === undefined) {
-          alert('外部瀏覽器分享已關閉')
-          return
-        }
 
-        if (parseInt(majorVersion) >= 10 && parseInt(minorVersion) >= 10 && parseInt(patchVersion) > 0) {
-          alert('Line APP分享已關閉')
-        }
-      }
-    }
-    function logout() {
-      liff.logout()
-      window.location.reload()
-    }
-    async function main() {
-      await liff.init({ liffId: "1657001987-mkY4AVBX" })
-      if (liff.isLoggedIn()) {
-        document.getElementById("Share").style.display = "block"
-        document.getElementById("getcontenText").style.display = "block"
-        
-        if (!liff.isInClient()) {
-          document.getElementById("Logout").style.display = "block"
-          document.getElementById("getcontenText").style.display = "block"
-          
-        }
-      } 
-      else {
-        document.getElementById("Login").style.display = "block"
-        
-      }
-    }
-    main()
-  </script>
-</body>
-</html>
+
