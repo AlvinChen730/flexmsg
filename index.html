@@ -154,11 +154,23 @@
       await liff.init({ liffId: "1656972516-qoPwgDP0" })
       if (liff.isLoggedIn()) {
         document.getElementById("Share").style.display = "block"
-        document.getElementById("getcontenText").style.display = "block"
+        document.getElementById("getName").style.display = "block"
+        document.getElementById("getNameColor").style.display = "block"
+        document.getElementById("getImgUrl").style.display = "block"
+        document.getElementById("getJobTitle").style.display = "block"
+        document.getElementById("getMail").style.display = "block"
+        document.getElementById("getFB").style.display = "block"
+        document.getElementById("getInfoWeb").style.display = "block"
         
         if (!liff.isInClient()) {
           document.getElementById("Logout").style.display = "block"
-          document.getElementById("getcontenText").style.display = "block"
+          document.getElementById("getName").style.display = "block"
+          document.getElementById("getNameColor").style.display = "block"
+          document.getElementById("getImgUrl").style.display = "block"
+          document.getElementById("getJobTitle").style.display = "block"
+          document.getElementById("getMail").style.display = "block"
+          document.getElementById("getFB").style.display = "block"
+          document.getElementById("getInfoWeb").style.display = "block"
           
         }
       } 
